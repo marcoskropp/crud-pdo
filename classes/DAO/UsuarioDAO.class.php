@@ -20,7 +20,7 @@ class UsuarioDAO extends Conexao{
     $sql = $this->con->getCon()->prepare("INSERT INTO usuario(nomeUsuario,senhaUsuario) VALUES (?,?)");
     $sql->bindValue(1, $usuario->getNome());
     $sql->bindValue(2, $usuario->getSenha());
-    $sql->execute();
+    return $sql->execute();
   }
 
   public function buscar(){
@@ -35,13 +35,13 @@ class UsuarioDAO extends Conexao{
     $sql->bindValue(":nome", $usuario->getNome());
     $sql->bindValue(":senha", $usuario->getSenha());
     $sql->bindValue(":id", $usuario->getId());
-    $sql->execute();
+    return $sql->execute();
   }
 
   public function excluir($usuario){
     $sql = $this->con->getCon()->prepare("DELETE FROM usuario WHERE idUsuario = :id");
     $sql->bindValue(":id", $usuario->getId());
-    $sql->execute();
+    return $sql->execute();
   }
 }
 
