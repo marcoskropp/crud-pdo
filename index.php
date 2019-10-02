@@ -81,8 +81,8 @@ $usuario = new Usuario();
       $usuario->setSenha(addslashes($_POST['senha']));
       if($usuarioDAO->login($usuario) == true){
         session_start();
-        $_SESSION['nome'] = $usuario->getNome();
-        $_SESSION['senha'] = $usuario->getSenha();
+        $_POST['nome'] = $usuario->getNome();
+        $_POST['senha'] = $usuario->getSenha();
         header('location: ./admin.php');
       }else{ ?>
         <script>
